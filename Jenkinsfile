@@ -1,4 +1,10 @@
 pipeline {
-    /* insert Declarative Pipeline here */
-	/*My First Groovy Script*/
+node("master") {
+    timeout(unit: 'SECONDS', time: 5) {
+        stage("One"){
+            sleep 10
+            echo 'hello'
+        }
+    }
+}
 }
