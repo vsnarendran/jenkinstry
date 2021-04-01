@@ -4,13 +4,13 @@ pipeline {
         stage('Example Build') {
             steps {
                 echo 'Hello, Maven'
-                bat 'mvn --version'
+                bat 'echo 'Hello, Maven''
             }
         }
         stage('Example Test') {
             steps {
                 echo 'Hello, JDK'
-                bat 'java -version'
+                bat 'echo 'Hello, Maven''
             }
         }
     }
