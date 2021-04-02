@@ -22,19 +22,19 @@ pipeline {
             }
         }   
 		stage('package and run test parallely') {
-				def stages = [:]
+				def stagess = [:]
 
-				stages["Package Languages"] = {
+				stagess["Package Languages"] = {
 					echo "Calling package-rcp"
 				}
-				stages["Run Test - one by one"] = {
+				stagess["Run Test - one by one"] = {
 					echo 'Running build-and-run-tests'
 					echo 'Running build-and-run-qaunit-tests'
 					echo 'Running build-and-run-simulink-tests'
 					echo 'Running build-and-run-analyses-tests'
 				}
 
-				parallel(stages)
+				parallel(stagess)
 			}		
 		
     }
