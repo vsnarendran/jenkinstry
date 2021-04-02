@@ -22,9 +22,9 @@ pipeline {
             }
         }   
 		stage('package and run test parallely') {
-				parallel Package Languages : {
+				parallel 'Package Languages' : {
 					echo "Calling package-rcp"
-				}, Run Test - one by one: {
+				}, 'Run Test - one by one' : {
 					echo 'Running build-and-run-tests'
 					echo 'Running build-and-run-qaunit-tests'
 					echo 'Running build-and-run-simulink-tests'
