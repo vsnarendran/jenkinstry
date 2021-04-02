@@ -21,16 +21,23 @@ pipeline {
                 echo 'Calling build-languages-with-importer-dep'
             }
         }   
-		stage('package and run test parallely') {
-				parallel 'Package Languages' : {
-					echo "Calling package-rcp"
-				}, 'Run Test - one by one' : {
-					echo 'Running build-and-run-tests'
-					echo 'Running build-and-run-qaunit-tests'
-					echo 'Running build-and-run-simulink-tests'
-					echo 'Running build-and-run-analyses-tests'
+	stage('build') {
+			parallel {			
+				stage('Package Languages') {
+					agent { label 'master' }
+					steps {
+						echo 'Calling package-rcp'
+					}
+				}        
+				stage('Run Test - one by one') {
+					agent { label 'master' }
+					steps {
+						echo 'Running build-and-run-tests'
+						echo 'Running build-and-run-qaunit-tests'
+						echo 'Running build-and-run-simulink-tests'
+						echo 'Running build-and-run-analyses-tests'
+					}
 				}
-			}		
-		
+		}
     }
 }
