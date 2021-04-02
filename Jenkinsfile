@@ -23,7 +23,6 @@ pipeline {
             }
         }   
 	stage('build') {
-		agent { label 'master' }
 			parallel {			
 
 					steps {
