@@ -38,6 +38,7 @@ pipeline {
 						echo 'Running build-and-run-analyses-tests'
 					}
 				}
-		}
+			}
+			}
     }
 }
