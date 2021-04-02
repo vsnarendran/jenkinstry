@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	options { timestamps () }
-	parallel {
+    stages {
         stage('Build allScripts') {
 			agent { label 'master' }
             steps {
@@ -23,15 +23,13 @@ pipeline {
             }
         }   
 	stage('build') {
+		agent { label 'master' }
 			parallel {			
-				stage('Package Languages') {
-					agent { label 'master' }
+
 					steps {
 						echo 'Calling package-rcp'
-					}
-				}        
-				stage('Run Test - one by one') {
-					agent { label 'master' }
+					}       
+
 					steps {
 						echo 'Running build-and-run-tests'
 						echo 'Running build-and-run-qaunit-tests'
@@ -39,7 +37,7 @@ pipeline {
 						echo 'Running build-and-run-analyses-tests'
 					}
 				}
-			}
+			
 			}
     }
 }
