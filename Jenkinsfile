@@ -1,5 +1,6 @@
 pipeline {
     agent any
+	options { timestamps () }
     stages {
         stage('Build allScripts') {
 			agent { label 'master' }
