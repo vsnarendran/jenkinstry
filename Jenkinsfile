@@ -2,6 +2,7 @@ pipeline {
     agent any
 	options { timestamps () }
     stages {
+	parallel {
         stage('Build allScripts') {
 			agent { label 'master' }
             steps {
@@ -39,6 +40,7 @@ pipeline {
 						echo 'Running build-and-run-analyses-tests'
 					}
 				}
+			}
 			}
 			}
     }
