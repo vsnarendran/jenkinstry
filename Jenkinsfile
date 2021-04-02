@@ -1,13 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('Example Build') {
+        stage('Build Languages') {
 			agent { label 'master' }
             steps {
                 echo 'Hello, Maven'
             }
         }
-        stage('Example Test') {
+        stage('Run Test') {
 			agent { label 'master' }
             steps {
                 echo 'Hello, JDK'
