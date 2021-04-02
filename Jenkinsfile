@@ -22,7 +22,6 @@ pipeline {
             }
         }   
 		stage('package and run test parallely') {
-				agent { label 'master' }
 				def stages = [:]
 
 				stages["Package Languages"] = {
