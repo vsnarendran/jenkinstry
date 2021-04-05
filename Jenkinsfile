@@ -1,5 +1,6 @@
 pipeline {
     agent any
+	options { timestamps () }
     stages {
         stage('single run') {
             parallel {
@@ -9,12 +10,12 @@ pipeline {
                             def group1 = [:]
                             group1["test_1"] = {
                                 echo "test_1"
-                                sh(script: "date -u")
+                                sh(script: "echo 'vi'>scp.bat")
                                 
                             }
                             group1["test_2"] = {
                                 echo "test_2"
-                                sh(script: "date -u")
+                                sh(script: "echo 'vi'>>scp.bat")
                             }
                             parallel group1
                         }
@@ -26,7 +27,7 @@ pipeline {
                             def group2 = [:]
                             group2["test_3"] = {
                                 echo "test_3"
-                                sh(script: "date -u")
+                                sh(script: "echo 'vi'>scp.bat")
                                 
                             }
                             group2["test_4"] = {
@@ -42,7 +43,7 @@ pipeline {
 		stage("scripting"){
 				steps{
 				script{
-				sh(script: "date -u")
+				sh(script: "print scp.bat")
 				
 					}
 				}
