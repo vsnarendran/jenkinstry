@@ -39,5 +39,12 @@ pipeline {
                 }
             }
         }
+		stage("scripting"){
+				script{
+				sh(script: "date -u")
+				
+				}
+		}
+		
     }
 }
