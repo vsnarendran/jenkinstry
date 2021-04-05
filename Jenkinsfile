@@ -1,42 +1,45 @@
 pipeline {
     agent any
-	options { timestamps () }
     stages {
-        stage('Build allScripts') {
-			agent { label 'master' }
-            steps {
-                echo 'Calling build all Scripts'
-				
+        stage('single run') {
+            parallel {
+                stage('Parallel Test 1') {
+                    steps {
+                        script {
+                            def group1 = [:]
+                            group1["test_1"] = {
+                                echo "test_1"
+                                sh(script: "date -u")
+                                build(job: 'jenkins_job_1')
+                            }
+                            group1["test_2"] = {
+                                echo "test_2"
+                                sh(script: "date -u")
+                                build(job: 'jenkins_job_2')
+                            }
+                            parallel group1
+                        }
+                    }
+                }
+                stage('Parallel Test 2') {
+                    steps {
+                        script {
+                            def group2 = [:]
+                            group2["test_3"] = {
+                                echo "test_3"
+                                sh(script: "date -u")
+                                build(job: 'jenkins_job_3')
+                            }
+                            group2["test_4"] = {
+                                echo "test_4"
+                                sh(script: "date -u")
+                                build(job: 'jenkins_job_4')
+                            }
+                            parallel group2
+                        }
+                    }
+                }
             }
-        }            
-		stage('Build WithoutImporter Languages') {
-			agent { label 'master' }
-            steps {
-                echo 'Calling build-languages-without-importer-dep'
-	
-            }
-        }        
-		stage('Build WithImporter Languages') {
-			agent { label 'master' }
-            steps {
-                echo 'Calling build-languages-with-importer-dep'
-            }
-        }   
-	stage('build') {
-			parallel {			
-
-					steps {
-						echo 'Calling package-rcp'
-					}       
-
-					steps {
-						echo 'Running build-and-run-tests'
-						echo 'Running build-and-run-qaunit-tests'
-						echo 'Running build-and-run-simulink-tests'
-						echo 'Running build-and-run-analyses-tests'
-					}
-				}
-			
-			}
+        }
     }
 }
