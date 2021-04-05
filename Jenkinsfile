@@ -40,10 +40,13 @@ pipeline {
             }
         }
 		stage("scripting"){
+				steps{
 				script{
 				sh(script: "date -u")
 				
+					}
 				}
+				
 		}
 		
     }
