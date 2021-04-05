@@ -43,7 +43,7 @@ pipeline {
 		stage("scripting"){
 				steps{
 				script{
-				sh(script: "gc scp.bat")
+				sh(script: "more scp.bat")
 				
 					}
 				}
