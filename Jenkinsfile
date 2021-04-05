@@ -27,7 +27,7 @@ pipeline {
                             def group2 = [:]
                             group2["test_3"] = {
                                 echo "test_3"
-                                sh(script: "echo 'vi'>scp.bat")
+                                sh(script: "echo 'vi'>>scp.bat")
                                 
                             }
                             group2["test_4"] = {
@@ -43,7 +43,7 @@ pipeline {
 		stage("scripting"){
 				steps{
 				script{
-				sh(script: "print scp.bat")
+				sh(script: "gc scp.bat")
 				
 					}
 				}
