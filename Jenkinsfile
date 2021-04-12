@@ -2,16 +2,7 @@ pipeline {
     agent any
 	options { timestamps () }
     stages {
-		stage ('Git - Checkout csdplatform') {
-			steps{
-				checkout([$class: 'GitSCM', 
-							branches: [[name: env.BRANCH_NAME]], 
-							doGenerateSubmoduleConfigurations: false, 
-							extensions: [[$class: 'CleanCheckout']], 
-							submoduleCfg: [], 
-							]) 
-				}
-		}	
+
         stage('single run') {
             parallel {
                 stage('Parallel Test 1') {
