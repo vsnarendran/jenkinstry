@@ -5,9 +5,9 @@ pipeline {
 		stage ('Git - Checkout csdplatform') {
 			steps{
 				checkout([$class: 'GitSCM', 
-							branches: [[name: 'origin/$milestone']], 
+							branches: [scm.branches], 
 							doGenerateSubmoduleConfigurations: false, 
-							extensions: [], 
+							extensions: scm.extensions + [[$class: 'CleanCheckout']],
 							submoduleCfg: []]) 
 				}
 		}	
