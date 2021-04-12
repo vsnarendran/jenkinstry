@@ -8,8 +8,7 @@ pipeline {
 							branches: [[name: 'origin/$milestone']], 
 							doGenerateSubmoduleConfigurations: false, 
 							extensions: [], 
-							submoduleCfg: [], 
-							userRemoteConfigs: [url: 'http://ies-iesd-bitbucket.ies.mentorg.com/scm/csd/csdplatform.git']]) 
+							submoduleCfg: []]) 
 				}
 		}	
         stage('single run') {
