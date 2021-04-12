@@ -4,7 +4,7 @@ pipeline {
     stages {
 		stage ('Git - Checkout csdplatform') {
 			steps{
-				checkout scm:([$class: 'GitSCM', 
+				checkout([$class: 'GitSCM', 
 							branches: [[name: 'origin/$milestone']], 
 							doGenerateSubmoduleConfigurations: false, 
 							extensions: [], 
