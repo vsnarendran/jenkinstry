@@ -2,6 +2,9 @@ pipeline {
     agent any
 	options { timestamps () }
     stages {
+		stage ('Git - Checkout csdplatform') {
+			checkout([$class: 'GitSCM', branches: [[name: 'origin/$milestone']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [url: 'http://ies-iesd-bitbucket.ies.mentorg.com/scm/csd/csdplatform.git']]) 
+		}	
         stage('single run') {
             parallel {
                 stage('Parallel Test 1') {
