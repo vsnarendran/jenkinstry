@@ -5,10 +5,10 @@ pipeline {
 			stage('build languages') {
                     steps {
                         script {
-                            bash'''#!/bin/bash 
+                            sh ' 
 							cd code/languages
 							ant csd-clean-and-build
-                            '''
+                            '
 						}
                     }
                 }
